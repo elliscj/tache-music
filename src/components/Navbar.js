@@ -1,39 +1,29 @@
-import React, { Component } from "react";
-import { Menu, Segment } from "semantic-ui-react";
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
 
-export default class NavBar extends Component {
-  state = { activeItem: "home" };
+const CenteredTabs = () => {
+  const [value, setValue] = React.useState(0);
+  const [currentPage, setCurrentPage] = React.useState("about");
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
-  render() {
-    const { activeItem } = this.state;
+  const handlePageChange = (currentPage) => {
+    setCurrentPage(currentPage);
+  };
 
-    return (
-      <Segment inverted>
-        <Menu inverted pointing secondary>
-          <Menu.Item
-            name="home"
-            active={activeItem === "home"}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="bio"
-            active={activeItem === "bio"}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="music"
-            active={activeItem === "music"}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="contact"
-            active={activeItem === "contact"}
-            onClick={this.handleItemClick}
-          />
-        </Menu>
-      </Segment>
-    );
-  }
-}
+  return (
+    <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
+      <Tabs value={value} onChange={handleChange} centered>
+        <Tab label="Music" onClick={() => handlePageChange("music")} />
+        <Tab label="Bio" onClick={() => handlePageChange("bio")} />
+        <Tab label="Contact" onClick={() => handlePageChange("contact")} />
+      </Tabs>
+    </Box>
+  );
+};
+
+export default CenteredTabs;
