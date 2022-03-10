@@ -1,11 +1,32 @@
-import { Component } from "react";
-import Home from "../pages/Home";
+import { useState } from "react";
+import Music from "../pages/Music";
 import Navbar from "./Navbar";
 import Bio from "../pages/Bio";
 import Contact from "../pages/Contact";
 
-export default class Main extends Component {
-  render() {
-    return <Navbar />;
-  }
-}
+const Main = () => {
+  const renderPage = () => {
+    if (currentPage === "music") {
+      return <Music />;
+    }
+    if (currentPage === "bio") {
+      return <Bio />;
+    }
+    return <Contact />;
+  };
+
+  const [currentPage, setCurrentPage] = useState("about");
+
+  const handlePageChange = (currentPage) => {
+    setCurrentPage(currentPage);
+  };
+
+  return (
+    <>
+      <Navbar currentPage={currentPage} handlePageChange={handlePageChange} />
+      {renderPage()}
+    </>
+  );
+};
+
+export default Main;

@@ -3,16 +3,11 @@ import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
-const CenteredTabs = () => {
+const CenteredTabs = ({ currentPage, handlePageChange }) => {
   const [value, setValue] = React.useState(0);
-  const [currentPage, setCurrentPage] = React.useState("about");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
-
-  const handlePageChange = (currentPage) => {
-    setCurrentPage(currentPage);
   };
 
   return (
