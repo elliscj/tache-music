@@ -5,6 +5,8 @@ import Contact from "../pages/Contact";
 import CenteredTabs from "./Navbar";
 
 const Main = () => {
+  const [currentPage, setCurrentPage] = useState("music");
+
   const renderPage = () => {
     if (currentPage === "music") {
       return <Music />;
@@ -12,10 +14,10 @@ const Main = () => {
     if (currentPage === "bio") {
       return <Bio />;
     }
-    return <Contact />;
+    if (currentPage === "contact") {
+      return <Contact />;
+    }
   };
-
-  const [currentPage, setCurrentPage] = useState("about");
 
   const handlePageChange = (currentPage) => {
     setCurrentPage(currentPage);
