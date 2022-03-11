@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Music from "../pages/Music";
-import Navbar from "./Navbar";
 import Bio from "../pages/Bio";
 import Contact from "../pages/Contact";
+import CenteredTabs from "./Navbar";
 
 const Main = () => {
   const renderPage = () => {
@@ -22,10 +22,13 @@ const Main = () => {
   };
 
   return (
-    <>
-      <Navbar currentPage={currentPage} handlePageChange={handlePageChange} />
+    <div>
+      <CenteredTabs
+        currentPage={currentPage}
+        handlePageChange={handlePageChange}
+      />
       {renderPage()}
-    </>
+    </div>
   );
 };
 
