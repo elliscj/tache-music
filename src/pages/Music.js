@@ -1,4 +1,5 @@
 import FeaturedSongs from "../components/FeaturedSongs";
+import ReactPlayer from "react-player";
 
 const Music = () => {
   return (
